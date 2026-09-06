@@ -348,149 +348,26 @@ html, body {
   background: #111; color: #FFF; transform: translateY(-2px); border-color: #111;
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
-.glass-link-item.email-full {
+.glass-email-mention {
   grid-column: span 2;
-  background: rgba(117, 197, 222, 0.2);
-  border-color: rgba(117, 197, 222, 0.5);
-  color: #0B4658;
+  display: flex; align-items: center; justify-content: flex-start;
+  padding: 8px 12px; border-radius: 12px;
+  background: rgba(117, 197, 222, 0.16); border: 1px solid rgba(117, 197, 222, 0.35);
+  color: #0B4658; font-size: 12px; font-weight: 500;
 }
-.glass-link-item.email-full:hover {
-  background: #75C5DE; color: #0A0A0B; border-color: #75C5DE;
-  box-shadow: 0 6px 18px rgba(117,197,222,0.35);
+.selectable-email-text {
+  font-family: var(--font-mono); font-weight: 700; color: #063442;
+  user-select: all; -webkit-user-select: all; cursor: text;
+  margin-left: 4px;
 }
-.glass-link-left {
-  display: flex; align-items: center; gap: 7px;
+.footer-email-badge {
+  font-family: var(--font-mono); font-size: 14px; color: #CCC;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+  padding: 12px 24px; border-radius: 9999px;
 }
-.glass-link-arrow {
-  font-size: 13px; opacity: 0.7; transition: transform 0.2s ease;
-}
-.glass-link-item:hover .glass-link-arrow {
-  transform: translate(2px, -2px); opacity: 1;
-}
-.glass-footer-stats {
-  display: flex; align-items: center; justify-content: space-between;
-  padding-top: 10px; border-top: 1px solid rgba(0, 0, 0, 0.08);
-}
-.glass-stat-item {
-  display: flex; flex-direction: column; align-items: center; gap: 2px;
-}
-.glass-stat-num {
-  font-size: 12.5px; font-weight: 700; color: #111; font-family: var(--font-mono);
-}
-.glass-stat-lbl {
-  font-size: 9.5px; color: #666; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;
-}
-
-/* ==========================================================================
-   SAFE EMAIL & DIRECT CONTACT MODAL
-   ========================================================================== */
-.safe-email-modal-overlay {
-  position: fixed; inset: 0; z-index: 9999;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  display: flex; align-items: center; justify-content: center;
-  padding: 20px;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.safe-email-modal-overlay.active {
-  opacity: 1; pointer-events: auto;
-}
-.safe-email-modal {
-  background: #141416;
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 28px;
-  max-width: 500px; width: 100%;
-  padding: 34px 28px;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.85), 0 0 40px rgba(117,197,222,0.15);
-  color: #F4F1E8;
-  transform: scale(0.92) translateY(20px);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex; flex-direction: column; gap: 18px;
-}
-.safe-email-modal-overlay.active .safe-email-modal {
-  transform: scale(1) translateY(0);
-}
-.safe-email-header {
-  display: flex; justify-content: space-between; align-items: center;
-}
-.modal-close-btn {
-  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
-  color: #FFF; font-size: 24px; line-height: 1; width: 36px; height: 36px;
-  border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s ease;
-}
-.modal-close-btn:hover {
-  background: rgba(255,255,255,0.2); transform: rotate(90deg);
-}
-.safe-email-title {
-  font-size: 23px; font-weight: 700; letter-spacing: -0.02em; color: #FFF; line-height: 120%;
-}
-.safe-email-desc {
-  font-size: 13.5px; color: #9A9590; line-height: 155%;
-}
-.verified-email-box {
-  background: rgba(0,0,0,0.55);
-  border: 1px solid rgba(117,197,222,0.3);
-  border-radius: 16px;
-  padding: 14px 18px;
-  display: flex; align-items: center; justify-content: space-between; gap: 12px;
-}
-.verified-email-text {
-  font-family: var(--font-mono); font-size: 14.5px; font-weight: 700; color: #75C5DE;
-  word-break: break-all;
-}
-.copy-email-btn {
-  background: #75C5DE; color: #0A0A0B; border: none; font-weight: 700;
-  font-size: 12.5px; font-family: var(--font-mono); padding: 8px 16px;
-  border-radius: 10px; cursor: pointer; transition: all 0.2s ease; flex-shrink: 0;
-}
-.copy-email-btn:hover {
-  background: #FFF; transform: translateY(-2px); box-shadow: 0 4px 14px rgba(117,197,222,0.4);
-}
-.email-actions-stack {
-  display: flex; flex-direction: column; gap: 10px;
-}
-.modal-action-btn {
-  display: flex; align-items: center; gap: 12px;
-  padding: 13px 18px; border-radius: 14px;
-  text-decoration: none; font-size: 13.5px; font-weight: 600;
-  transition: all 0.25s ease;
-}
-.modal-action-btn.gmail-btn {
-  background: #FFF; color: #111; border: 1px solid #FFF;
-}
-.modal-action-btn.gmail-btn:hover {
-  background: #75C5DE; border-color: #75C5DE; color: #000; transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(117,197,222,0.3);
-}
-.modal-action-btn.mailto-btn {
-  background: rgba(255,255,255,0.06); color: #F4F1E8; border: 1px solid rgba(255,255,255,0.12);
-}
-.modal-action-btn.mailto-btn:hover {
-  background: rgba(255,255,255,0.12); color: #FFF; transform: translateY(-2px);
-}
-.safe-note {
-  font-size: 11.5px; color: #888; text-align: center; margin-top: 2px;
-}
-
-/* Toast Notification */
-.toast-notification {
-  position: fixed; bottom: 32px; right: 32px; z-index: 10000;
-  background: #111113; color: #FFF; border: 1px solid #4EEDA4;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 20px rgba(78,237,164,0.25);
-  padding: 14px 22px; border-radius: 16px;
-  display: flex; align-items: center; gap: 12px;
-  font-size: 13.5px; font-weight: 600;
-  opacity: 0; transform: translateY(20px); pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-.toast-notification.show {
-  opacity: 1; transform: translateY(0); pointer-events: auto;
-}
-.toast-icon {
-  width: 22px; height: 22px; border-radius: 50%; background: #4EEDA4; color: #000;
-  display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800;
+.footer-email-badge .selectable-email-text {
+  color: #75C5DE; font-size: 14px;
 }
 
 /* ==========================================================================
@@ -887,7 +764,7 @@ html, body {
     <a href="#contact">Contact</a>
   </nav>
   <div class="menu-contact">
-    <a href="javascript:void(0)" onclick="openContactModal(event)" class="menu-email">Email: tarunjan2007@gmail.com &rarr;</a>
+    <div class="menu-email">Email: <strong class="selectable-email-text" style="color:#75C5DE; font-size:15px;">tarunjan2007@gmail.com</strong></div>
     <div class="menu-socials">
       <a href="https://github.com/tarunt-07" target="_blank" rel="noreferrer">GitHub</a>
       <a href="https://www.linkedin.com/in/tarun-kumar-693291385/" target="_blank" rel="noreferrer">LinkedIn</a>
@@ -895,7 +772,7 @@ html, body {
     </div>
   </div>
   <div style="margin-top:32px;">
-    <a href="javascript:void(0)" onclick="openContactModal(event)" class="menu-cta-btn">
+    <a href="#contact" class="menu-cta-btn">
       <span class="menu-cta-bg"></span>
       <span class="menu-cta-text">Let's talk</span>
       <span class="menu-cta-circle">
@@ -964,16 +841,15 @@ html, body {
             <span class="glass-link-arrow">&nearr;</span>
           </a>
 
-          <button type="button" class="glass-link-item email-full" onclick="openContactModal(event)">
+          <div class="glass-email-mention">
             <span class="glass-link-left">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
-              <span>Email: tarunjan2007@gmail.com</span>
+              <span>Email: <strong class="selectable-email-text">tarunjan2007@gmail.com</strong></span>
             </span>
-            <span class="glass-link-arrow">&nearr;</span>
-          </button>
+          </div>
         </div>
 
         <div class="glass-footer-stats">
@@ -1338,9 +1214,9 @@ html, body {
         GitHub @tarunt-07 &rarr;
       </a>
 
-      <a href="javascript:void(0)" onclick="openContactModal(event)" class="footer-social-link">
-        Email Me &rarr;
-      </a>
+      <div class="footer-email-badge">
+        Email: <strong class="selectable-email-text">tarunjan2007@gmail.com</strong>
+      </div>
     </div>
 
     <div class="footer-bottom-bar">
@@ -1353,66 +1229,6 @@ html, body {
     </div>
   </div>
 </footer>
-
-<!-- ===== SAFE DIRECT EMAIL & CONTACT MODAL ===== -->
-<div class="safe-email-modal-overlay" id="emailModal" onclick="closeEmailModal(event)">
-  <div class="safe-email-modal" onclick="event.stopPropagation()">
-    <div class="safe-email-header">
-      <div style="display:flex; align-items:center; gap:10px;">
-        <div style="width:10px; height:10px; border-radius:50%; background:#4EEDA4; box-shadow:0 0 10px #4EEDA4;"></div>
-        <span style="font-family:var(--font-mono); font-size:12px; color:#75C5DE; letter-spacing:0.1em; font-weight:700;">DIRECT VERIFIED CONTACT</span>
-      </div>
-      <button class="modal-close-btn" onclick="closeEmailModal()" aria-label="Close modal">&times;</button>
-    </div>
-
-    <h3 class="safe-email-title">Contact Tarun Kumar</h3>
-    <p class="safe-email-desc">
-      Have an ambitious idea, project collaboration, or engineering role? Choose how you'd like to get in touch:
-    </p>
-
-    <div class="verified-email-box">
-      <div style="display:flex; flex-direction:column; gap:4px; overflow:hidden;">
-        <span style="font-size:11px; font-family:var(--font-mono); color:#888;">RECIPIENT EMAIL</span>
-        <span class="verified-email-text" id="targetEmail">tarunjan2007@gmail.com</span>
-      </div>
-      <button class="copy-email-btn" id="copyEmailBtn" onclick="copyTarunEmail()">
-        <span id="copyBtnText">Copy</span>
-      </button>
-    </div>
-
-    <div class="email-actions-stack">
-      <!-- 1. Open Web Gmail -->
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tarunjan2007@gmail.com&su=Project%20Collaboration%20Inquiry%20via%20Portfolio" 
-         target="_blank" rel="noreferrer" class="modal-action-btn gmail-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-          <polyline points="22,6 12,13 2,6"></polyline>
-        </svg>
-        <span>Open Web Gmail in Browser</span>
-        <span style="font-size:12px; opacity:0.8; margin-left:auto;">Direct &rarr;</span>
-      </a>
-
-      <!-- 2. System Mail Client -->
-      <a href="mailto:tarunjan2007@gmail.com?subject=Project%20Collaboration%20Inquiry" class="modal-action-btn mailto-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-        </svg>
-        <span>Default App (Outlook / Apple Mail)</span>
-        <span style="font-size:12px; opacity:0.8; margin-left:auto;">Open &rarr;</span>
-      </a>
-    </div>
-
-    <div class="safe-note">
-      🔒 Safe &amp; Direct &bull; Verified recipient: <strong>tarunjan2007@gmail.com</strong>
-    </div>
-  </div>
-</div>
-
-<!-- FLOATING TOAST NOTIFICATION -->
-<div class="toast-notification" id="toastNotification">
-  <span class="toast-icon">✓</span>
-  <span id="toastMsg">Copied tarunjan2007@gmail.com to clipboard!</span>
-</div>
 
 <!-- ===== 12. SCRIPT (MOTION.AI CANVAS SPOTLIGHT + CURSOR PREVIEW + REAL-TIME) ===== -->
 <script>
@@ -1544,52 +1360,6 @@ html, body {
   }
   updateClock();
   setInterval(updateClock, 1000);
-
-  // 6. Safe Email & Direct Contact Handlers
-  window.openContactModal = function(e) {
-    if (e) e.preventDefault();
-    const modal = document.getElementById('emailModal');
-    if (modal) modal.classList.add('active');
-  };
-
-  window.closeEmailModal = function(e) {
-    if (e && e.target !== e.currentTarget && !e.target.classList.contains('modal-close-btn')) return;
-    const modal = document.getElementById('emailModal');
-    if (modal) modal.classList.remove('active');
-  };
-
-  window.copyTarunEmail = function() {
-    const email = "tarunjan2007@gmail.com";
-    function showToast() {
-      const copyBtnText = document.getElementById('copyBtnText');
-      if (copyBtnText) copyBtnText.textContent = "Copied!";
-      setTimeout(() => { if (copyBtnText) copyBtnText.textContent = "Copy"; }, 2500);
-
-      const toast = document.getElementById('toastNotification');
-      if (toast) {
-        toast.classList.add('show');
-        setTimeout(() => { toast.classList.remove('show'); }, 3000);
-      }
-    }
-
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(email).then(showToast).catch(() => {
-        fallbackCopy();
-      });
-    } else {
-      fallbackCopy();
-    }
-
-    function fallbackCopy() {
-      const ta = document.createElement('textarea');
-      ta.value = email;
-      document.body.appendChild(ta);
-      ta.select();
-      try { document.execCommand('copy'); } catch(err) {}
-      document.body.removeChild(ta);
-      showToast();
-    }
-  };
 })();
 </script>
 </body>
