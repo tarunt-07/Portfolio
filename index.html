@@ -216,7 +216,8 @@ html, body {
   position: relative; width: 100%; overflow: hidden;
   background: #E4E4E4; min-height: 100vh;
 }
-@media (min-width: 768px) { .hero { height: 100vh; min-height: 800px; } }
+@media (min-width: 768px) { .hero { min-height: 100vh; height: auto; } }
+@media (min-width: 1024px) { .hero { height: 100vh; min-height: 780px; } }
 
 .hero-big-text {
   position: absolute; bottom: -30px; left: 0; right: 0; z-index: 2;
@@ -247,24 +248,254 @@ html, body {
   position: relative; z-index: 8;
   display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;
   width: 100%; max-width: 1600px; margin: 0 auto;
-  padding: 110px 16px 24px 16px; pointer-events: none;
+  padding: 100px 16px 40px 16px; pointer-events: none;
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .hero-content {
     position: absolute; inset: 0;
-    justify-content: space-between;
-    padding: 160px 40px 100px 40px;
+    justify-content: center;
+    padding: 120px 48px 40px 48px;
   }
 }
-.hero-content-inner { display: flex; flex-direction: column; align-items: flex-start; gap: 30px; width: 100%; pointer-events: auto; }
+.hero-content-inner {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 32px;
+  width: 100%; pointer-events: auto;
+}
+@media (min-width: 1024px) {
+  .hero-content-inner {
+    flex-direction: row; justify-content: space-between; align-items: center; gap: 48px;
+  }
+}
+
+.hero-left-col {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 24px;
+  max-width: 500px; width: 100%;
+}
 
 .hero-headline {
-  font-size: 22px; font-weight: 500; line-height: 120%;
-  letter-spacing: -0.02em; color: #111111; max-width: 447px;
+  font-size: 22px; font-weight: 500; line-height: 125%;
+  letter-spacing: -0.02em; color: #111111; max-width: 480px;
 }
 @media (min-width: 768px) { .hero-headline { font-size: 28px; } }
 
 #reveal-canvas { display: none; position: absolute; inset: 0; pointer-events: none; }
+
+/* ==========================================================================
+   FIRST PAGE FROSTED GLASS PROFILE CARD
+   ========================================================================== */
+.hero-glass-card {
+  background: rgba(255, 255, 255, 0.48);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 28px;
+  padding: 26px 24px;
+  width: 100%; max-width: 440px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.07), 0 1px 0 rgba(255,255,255,0.85) inset;
+  display: flex; flex-direction: column; gap: 18px;
+  position: relative; overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+  pointer-events: auto;
+  z-index: 10;
+}
+.hero-glass-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
+}
+.hero-glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 32px 70px rgba(0,0,0,0.12), 0 0 32px rgba(117,197,222,0.35);
+  border-color: rgba(117,197,222,0.7);
+}
+.glass-card-header {
+  display: flex; align-items: center; gap: 14px;
+}
+.glass-avatar-box {
+  width: 50px; height: 50px; border-radius: 16px;
+  background: #111; display: flex; align-items: center; justify-content: center;
+  border: 1.5px solid rgba(117,197,222,0.5);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12); flex-shrink: 0;
+}
+.glass-avatar-box img {
+  width: 36px; height: 36px; display: block;
+}
+.glass-header-info {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.glass-name {
+  font-size: 21px; font-weight: 800; color: #111; letter-spacing: -0.02em; line-height: 115%;
+}
+.glass-subtitle {
+  font-size: 12px; font-weight: 600; color: #555; font-family: var(--font-mono);
+}
+.glass-status-pill {
+  margin-left: auto; font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  background: rgba(78, 237, 164, 0.2); color: #076E3E;
+  border: 1px solid rgba(78, 237, 164, 0.5);
+  padding: 4px 10px; border-radius: 9999px; display: inline-flex; align-items: center; gap: 6px;
+  white-space: nowrap;
+}
+.glass-bio {
+  font-size: 13.5px; line-height: 150%; color: #2A2A2A; margin: 0;
+}
+.glass-links-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+.glass-link-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px; border-radius: 14px;
+  background: rgba(255, 255, 255, 0.65); border: 1px solid rgba(0, 0, 0, 0.08);
+  text-decoration: none; color: #111; font-size: 13px; font-weight: 600;
+  transition: all 0.25s ease; cursor: pointer;
+}
+.glass-link-item:hover {
+  background: #111; color: #FFF; transform: translateY(-2px); border-color: #111;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+.glass-link-item.email-full {
+  grid-column: span 2;
+  background: rgba(117, 197, 222, 0.2);
+  border-color: rgba(117, 197, 222, 0.5);
+  color: #0B4658;
+}
+.glass-link-item.email-full:hover {
+  background: #75C5DE; color: #0A0A0B; border-color: #75C5DE;
+  box-shadow: 0 6px 20px rgba(117,197,222,0.4);
+}
+.glass-link-left {
+  display: flex; align-items: center; gap: 8px;
+}
+.glass-link-arrow {
+  font-size: 14px; opacity: 0.7; transition: transform 0.2s ease;
+}
+.glass-link-item:hover .glass-link-arrow {
+  transform: translate(2px, -2px); opacity: 1;
+}
+.glass-footer-stats {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 14px; border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.glass-stat-item {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.glass-stat-num {
+  font-size: 13.5px; font-weight: 700; color: #111; font-family: var(--font-mono);
+}
+.glass-stat-lbl {
+  font-size: 10px; color: #666; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   SAFE EMAIL & DIRECT CONTACT MODAL
+   ========================================================================== */
+.safe-email-modal-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.safe-email-modal-overlay.active {
+  opacity: 1; pointer-events: auto;
+}
+.safe-email-modal {
+  background: #141416;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 28px;
+  max-width: 500px; width: 100%;
+  padding: 34px 28px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.85), 0 0 40px rgba(117,197,222,0.15);
+  color: #F4F1E8;
+  transform: scale(0.92) translateY(20px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex; flex-direction: column; gap: 18px;
+}
+.safe-email-modal-overlay.active .safe-email-modal {
+  transform: scale(1) translateY(0);
+}
+.safe-email-header {
+  display: flex; justify-content: space-between; align-items: center;
+}
+.modal-close-btn {
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+  color: #FFF; font-size: 24px; line-height: 1; width: 36px; height: 36px;
+  border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s ease;
+}
+.modal-close-btn:hover {
+  background: rgba(255,255,255,0.2); transform: rotate(90deg);
+}
+.safe-email-title {
+  font-size: 23px; font-weight: 700; letter-spacing: -0.02em; color: #FFF; line-height: 120%;
+}
+.safe-email-desc {
+  font-size: 13.5px; color: #9A9590; line-height: 155%;
+}
+.verified-email-box {
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(117,197,222,0.3);
+  border-radius: 16px;
+  padding: 14px 18px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.verified-email-text {
+  font-family: var(--font-mono); font-size: 14.5px; font-weight: 700; color: #75C5DE;
+  word-break: break-all;
+}
+.copy-email-btn {
+  background: #75C5DE; color: #0A0A0B; border: none; font-weight: 700;
+  font-size: 12.5px; font-family: var(--font-mono); padding: 8px 16px;
+  border-radius: 10px; cursor: pointer; transition: all 0.2s ease; flex-shrink: 0;
+}
+.copy-email-btn:hover {
+  background: #FFF; transform: translateY(-2px); box-shadow: 0 4px 14px rgba(117,197,222,0.4);
+}
+.email-actions-stack {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.modal-action-btn {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 18px; border-radius: 14px;
+  text-decoration: none; font-size: 13.5px; font-weight: 600;
+  transition: all 0.25s ease;
+}
+.modal-action-btn.gmail-btn {
+  background: #FFF; color: #111; border: 1px solid #FFF;
+}
+.modal-action-btn.gmail-btn:hover {
+  background: #75C5DE; border-color: #75C5DE; color: #000; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(117,197,222,0.3);
+}
+.modal-action-btn.mailto-btn {
+  background: rgba(255,255,255,0.06); color: #F4F1E8; border: 1px solid rgba(255,255,255,0.12);
+}
+.modal-action-btn.mailto-btn:hover {
+  background: rgba(255,255,255,0.12); color: #FFF; transform: translateY(-2px);
+}
+.safe-note {
+  font-size: 11.5px; color: #888; text-align: center; margin-top: 2px;
+}
+
+/* Toast Notification */
+.toast-notification {
+  position: fixed; bottom: 32px; right: 32px; z-index: 10000;
+  background: #111113; color: #FFF; border: 1px solid #4EEDA4;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 20px rgba(78,237,164,0.25);
+  padding: 14px 22px; border-radius: 16px;
+  display: flex; align-items: center; gap: 12px;
+  font-size: 13.5px; font-weight: 600;
+  opacity: 0; transform: translateY(20px); pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.toast-notification.show {
+  opacity: 1; transform: translateY(0); pointer-events: auto;
+}
+.toast-icon {
+  width: 22px; height: 22px; border-radius: 50%; background: #4EEDA4; color: #000;
+  display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800;
+}
 
 /* ==========================================================================
    CRAZY ELEMENT 1: DUAL-DIRECTION KINETIC MARQUEE TICKER
@@ -660,7 +891,7 @@ html, body {
     <a href="#contact">Contact</a>
   </nav>
   <div class="menu-contact">
-    <a href="https://www.linkedin.com/in/tarun-kumar-693291385/" target="_blank" rel="noreferrer" class="menu-email">LinkedIn Profile &rarr;</a>
+    <a href="javascript:void(0)" onclick="openContactModal(event)" class="menu-email">Email: tarunjan2007@gmail.com &rarr;</a>
     <div class="menu-socials">
       <a href="https://github.com/tarunt-07" target="_blank" rel="noreferrer">GitHub</a>
       <a href="https://www.linkedin.com/in/tarun-kumar-693291385/" target="_blank" rel="noreferrer">LinkedIn</a>
@@ -668,7 +899,7 @@ html, body {
     </div>
   </div>
   <div style="margin-top:32px;">
-    <a href="#contact" class="menu-cta-btn">
+    <a href="javascript:void(0)" onclick="openContactModal(event)" class="menu-cta-btn">
       <span class="menu-cta-bg"></span>
       <span class="menu-cta-text">Let's talk</span>
       <span class="menu-cta-circle">
@@ -701,31 +932,99 @@ html, body {
   <!-- Content -->
   <div class="hero-content">
     <div class="hero-content-inner">
-      <h1 class="hero-headline" id="headline">
-        <span class="word-reveal">I</span>
-        <span class="word-reveal">build</span>
-        <span class="word-reveal">compelling</span>
-        <span class="word-reveal">visual</span>
-        <span class="word-reveal">stories,</span>
-        <span class="word-reveal">intelligent</span>
-        <span class="word-reveal">AI</span>
-        <span class="word-reveal">&amp;</span>
-        <span class="word-reveal">IoT</span>
-        <span class="word-reveal">systems</span>
-        <span class="word-reveal">that</span>
-        <span class="word-reveal">make</span>
-        <span class="word-reveal">ideas</span>
-        <span class="word-reveal">shine.</span>
-      </h1>
-      <a href="#work" class="cta-btn cta-animate">
-        <span class="cta-btn-bg"></span>
-        <span class="cta-btn-text">Start a project now</span>
-        <span class="cta-btn-circle">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 13L13 5H6M13 5V12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-      </a>
+      <div class="hero-left-col">
+        <h1 class="hero-headline" id="headline">
+          <span class="word-reveal">I</span>
+          <span class="word-reveal">build</span>
+          <span class="word-reveal">compelling</span>
+          <span class="word-reveal">visual</span>
+          <span class="word-reveal">stories,</span>
+          <span class="word-reveal">intelligent</span>
+          <span class="word-reveal">AI</span>
+          <span class="word-reveal">&amp;</span>
+          <span class="word-reveal">IoT</span>
+          <span class="word-reveal">systems</span>
+          <span class="word-reveal">that</span>
+          <span class="word-reveal">make</span>
+          <span class="word-reveal">ideas</span>
+          <span class="word-reveal">shine.</span>
+        </h1>
+        <a href="#work" class="cta-btn cta-animate">
+          <span class="cta-btn-bg"></span>
+          <span class="cta-btn-text">Start a project now</span>
+          <span class="cta-btn-circle">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 13L13 5H6M13 5V12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- FROSTED GLASS PROFILE CARD (FIRST PAGE DETAILS) -->
+      <div class="hero-glass-card">
+        <div class="glass-card-header">
+          <div class="glass-avatar-box">
+            <img src="cat-coolers.svg" alt="Tarun Kumar Logo"/>
+          </div>
+          <div class="glass-header-info">
+            <div class="glass-name">Tarun Kumar</div>
+            <div class="glass-subtitle">B.Tech CSE &bull; VIT Chennai</div>
+          </div>
+          <div class="glass-status-pill">
+            <span class="pulse-green"></span> Available
+          </div>
+        </div>
+
+        <p class="glass-bio">
+          <strong>The Undercover Innovator 🌟</strong> — Architecting intelligent healthcare ecosystems (<strong>PRANTAR.io</strong>), computer vision gesture pipelines, and high-performance algorithms.
+        </p>
+
+        <div class="glass-links-grid">
+          <a href="https://github.com/tarunt-07" target="_blank" rel="noreferrer" class="glass-link-item">
+            <span class="glass-link-left">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </span>
+            <span class="glass-link-arrow">&nearr;</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/tarun-kumar-693291385/" target="_blank" rel="noreferrer" class="glass-link-item">
+            <span class="glass-link-left">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              LinkedIn
+            </span>
+            <span class="glass-link-arrow">&nearr;</span>
+          </a>
+
+          <button type="button" class="glass-link-item email-full" onclick="openContactModal(event)">
+            <span class="glass-link-left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>Email: tarunjan2007@gmail.com</span>
+            </span>
+            <span class="glass-link-arrow">&nearr;</span>
+          </button>
+        </div>
+
+        <div class="glass-footer-stats">
+          <div class="glass-stat-item">
+            <span class="glass-stat-num">VIT Chennai</span>
+            <span class="glass-stat-lbl">B.Tech CSE</span>
+          </div>
+          <div style="width:1px; height:24px; background:rgba(0,0,0,0.1);"></div>
+          <div class="glass-stat-item">
+            <span class="glass-stat-num">4+ Systems</span>
+            <span class="glass-stat-lbl">Production</span>
+          </div>
+          <div style="width:1px; height:24px; background:rgba(0,0,0,0.1);"></div>
+          <div class="glass-stat-item">
+            <span class="glass-stat-num">AI &amp; IoT</span>
+            <span class="glass-stat-lbl">Core Focus</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </main>
@@ -1042,7 +1341,7 @@ html, body {
         GitHub @tarunt-07 &rarr;
       </a>
 
-      <a href="mailto:tarunjan2007@gmail.com" class="footer-social-link">
+      <a href="javascript:void(0)" onclick="openContactModal(event)" class="footer-social-link">
         Email Me &rarr;
       </a>
     </div>
@@ -1057,6 +1356,66 @@ html, body {
     </div>
   </div>
 </footer>
+
+<!-- ===== SAFE DIRECT EMAIL & CONTACT MODAL ===== -->
+<div class="safe-email-modal-overlay" id="emailModal" onclick="closeEmailModal(event)">
+  <div class="safe-email-modal" onclick="event.stopPropagation()">
+    <div class="safe-email-header">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="width:10px; height:10px; border-radius:50%; background:#4EEDA4; box-shadow:0 0 10px #4EEDA4;"></div>
+        <span style="font-family:var(--font-mono); font-size:12px; color:#75C5DE; letter-spacing:0.1em; font-weight:700;">DIRECT VERIFIED CONTACT</span>
+      </div>
+      <button class="modal-close-btn" onclick="closeEmailModal()" aria-label="Close modal">&times;</button>
+    </div>
+
+    <h3 class="safe-email-title">Contact Tarun Kumar</h3>
+    <p class="safe-email-desc">
+      Have an ambitious idea, project collaboration, or engineering role? Choose how you'd like to get in touch:
+    </p>
+
+    <div class="verified-email-box">
+      <div style="display:flex; flex-direction:column; gap:4px; overflow:hidden;">
+        <span style="font-size:11px; font-family:var(--font-mono); color:#888;">RECIPIENT EMAIL</span>
+        <span class="verified-email-text" id="targetEmail">tarunjan2007@gmail.com</span>
+      </div>
+      <button class="copy-email-btn" id="copyEmailBtn" onclick="copyTarunEmail()">
+        <span id="copyBtnText">Copy</span>
+      </button>
+    </div>
+
+    <div class="email-actions-stack">
+      <!-- 1. Open Web Gmail -->
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tarunjan2007@gmail.com&su=Project%20Collaboration%20Inquiry%20via%20Portfolio" 
+         target="_blank" rel="noreferrer" class="modal-action-btn gmail-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+        <span>Open Web Gmail in Browser</span>
+        <span style="font-size:12px; opacity:0.8; margin-left:auto;">Direct &rarr;</span>
+      </a>
+
+      <!-- 2. System Mail Client -->
+      <a href="mailto:tarunjan2007@gmail.com?subject=Project%20Collaboration%20Inquiry" class="modal-action-btn mailto-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span>Default App (Outlook / Apple Mail)</span>
+        <span style="font-size:12px; opacity:0.8; margin-left:auto;">Open &rarr;</span>
+      </a>
+    </div>
+
+    <div class="safe-note">
+      🔒 Safe &amp; Direct &bull; Verified recipient: <strong>tarunjan2007@gmail.com</strong>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING TOAST NOTIFICATION -->
+<div class="toast-notification" id="toastNotification">
+  <span class="toast-icon">✓</span>
+  <span id="toastMsg">Copied tarunjan2007@gmail.com to clipboard!</span>
+</div>
 
 <!-- ===== 12. SCRIPT (MOTION.AI CANVAS SPOTLIGHT + CURSOR PREVIEW + REAL-TIME) ===== -->
 <script>
@@ -1188,6 +1547,52 @@ html, body {
   }
   updateClock();
   setInterval(updateClock, 1000);
+
+  // 6. Safe Email & Direct Contact Handlers
+  window.openContactModal = function(e) {
+    if (e) e.preventDefault();
+    const modal = document.getElementById('emailModal');
+    if (modal) modal.classList.add('active');
+  };
+
+  window.closeEmailModal = function(e) {
+    if (e && e.target !== e.currentTarget && !e.target.classList.contains('modal-close-btn')) return;
+    const modal = document.getElementById('emailModal');
+    if (modal) modal.classList.remove('active');
+  };
+
+  window.copyTarunEmail = function() {
+    const email = "tarunjan2007@gmail.com";
+    function showToast() {
+      const copyBtnText = document.getElementById('copyBtnText');
+      if (copyBtnText) copyBtnText.textContent = "Copied!";
+      setTimeout(() => { if (copyBtnText) copyBtnText.textContent = "Copy"; }, 2500);
+
+      const toast = document.getElementById('toastNotification');
+      if (toast) {
+        toast.classList.add('show');
+        setTimeout(() => { toast.classList.remove('show'); }, 3000);
+      }
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(showToast).catch(() => {
+        fallbackCopy();
+      });
+    } else {
+      fallbackCopy();
+    }
+
+    function fallbackCopy() {
+      const ta = document.createElement('textarea');
+      ta.value = email;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch(err) {}
+      document.body.removeChild(ta);
+      showToast();
+    }
+  };
 })();
 </script>
 </body>
