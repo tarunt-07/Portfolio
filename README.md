@@ -35,7 +35,7 @@ node server.js
 python -m http.server 3000
 ```
 
-Visit `https://tarunportfolio-two.vercel.app/` to preview.
+Visit https://tarunportfolio-two.vercel.app/ to preview.
 
 ---
 
