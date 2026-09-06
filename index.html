@@ -4,10 +4,16 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Tarun Kumar — The Undercover Innovator | Creative Studio & Systems</title>
+<meta property="og:title" content="Tarun Kumar — The Undercover Innovator | Creative Studio & Systems"/>
+<meta property="og:description" content="Motion-driven developer portfolio. AI clinical systems, real-time IoT telemetry, computer vision gesture modules, and algorithms."/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Tarun Kumar — Portfolio"/>
+<meta name="twitter:description" content="AI, IoT, and Full-Stack Systems Portfolio."/>
 <link rel="icon" type="image/svg+xml" href="cat-coolers.svg"/>
 <link rel="apple-touch-icon" href="cat-coolers.svg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://fonts.gstatic.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -42,60 +48,34 @@ html, body {
 
 ::selection { background: #75C5DE; color: #000; }
 
-/* ===== 1. SPLASH (EXACT MOTION.AI) ===== */
-.splash {
-  position: fixed; inset: 0;
-  width: 100vw; height: 100vh;
-  z-index: 9999;
-  pointer-events: none;
-  overflow: hidden;
-  animation: splashHide 0.3s ease forwards;
-  animation-delay: 1.35s;
-}
-.splash-row { display: flex; width: 100%; height: 50%; }
-.splash-box { width: 20%; height: 100%; background: #75C5DE; }
-.splash-row-top .splash-box { animation: splashTop 1s cubic-bezier(0.96,-0.02,0.38,1.01) forwards; }
-.splash-row-bottom .splash-box { animation: splashBottom 1s cubic-bezier(0.96,-0.02,0.38,1.01) forwards; }
-.splash-box:nth-child(1) { animation-delay: 0s; }
-.splash-box:nth-child(2) { animation-delay: 0.05s; }
-.splash-box:nth-child(3) { animation-delay: 0.1s; }
-.splash-box:nth-child(4) { animation-delay: 0.15s; }
-.splash-box:nth-child(5) { animation-delay: 0.2s; }
-
-@keyframes splashTop { from { transform: translateY(0%); } to { transform: translateY(-100%); } }
-@keyframes splashBottom { from { transform: translateY(0%); } to { transform: translateY(100%); } }
-@keyframes splashHide { to { opacity: 0; visibility: hidden; } }
-
-/* ===== 2. HERO ENTRANCE (EXACT MOTION.AI) ===== */
+/* ===== 1. HERO ENTRANCE (IMMEDIATE PREVIEW & ZERO-DELAY RENDER) ===== */
 @keyframes heroImageIn {
-  from { opacity: 0; transform: scale(1.5) rotate(3deg); }
-  to { opacity: 1; transform: scale(1) rotate(0deg); }
+  from { opacity: 0.8; transform: scale(1.08); }
+  to { opacity: 1; transform: scale(1); }
 }
 .hero-image-animate {
-  animation: heroImageIn 1.2s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
-  animation-delay: 1s;
-  opacity: 0;
+  animation: heroImageIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 1;
 }
 
 @keyframes wordReveal {
-  from { opacity: 0; transform: translateY(10px); filter: blur(10px); }
+  from { opacity: 0; transform: translateY(8px); filter: blur(6px); }
   to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 .word-reveal {
-  opacity: 0;
+  opacity: 1;
   display: inline-block;
   margin-right: 0.3em;
   animation: wordReveal 0.4s ease forwards;
 }
 
 @keyframes slideUpScale {
-  from { opacity: 0; transform: translateY(60px) scale(0.4); }
+  from { opacity: 0.7; transform: translateY(16px) scale(0.96); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 .cta-animate {
-  opacity: 0;
-  animation: slideUpScale 0.8s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
-  animation-delay: 1s;
+  opacity: 1;
+  animation: slideUpScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* ===== CTA BUTTON (EXACT MOTION.AI) ===== */
@@ -136,11 +116,11 @@ html, body {
 .menu-cta-btn:hover .menu-cta-circle { transform: translateX(-4px); }
 
 /* Creator Text */
-@keyframes creatorSlideUp { from { transform: translateY(330px); } to { transform: translateY(0); } }
+@keyframes creatorSlideUp { from { transform: translateY(40px); opacity: 0.5; } to { transform: translateY(0); opacity: 1; } }
 .creator-text-animate {
-  transform: translateY(330px);
-  animation: creatorSlideUp 1s cubic-bezier(0.16,1,0.3,1) forwards;
-  animation-delay: 1.5s;
+  transform: translateY(0);
+  opacity: 1;
+  animation: creatorSlideUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards;
 }
 
 /* Navigation */
@@ -643,8 +623,6 @@ html, body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .splash { animation: splashHide 0.01s linear forwards; }
-  .splash-box { animation: none !important; }
   .hero-image-animate, .word-reveal, .cta-animate, .creator-text-animate {
     animation: none !important; opacity: 1 !important;
     transform: none !important; filter: none !important; visibility: visible !important;
@@ -653,16 +631,6 @@ html, body {
 </style>
 </head>
 <body>
-
-<!-- ===== 1. SPLASH (EXACT MOTION.AI) ===== -->
-<div class="splash" id="splash">
-  <div class="splash-row splash-row-top">
-    <div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div>
-  </div>
-  <div class="splash-row splash-row-bottom">
-    <div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div>
-  </div>
-</div>
 
 <!-- ===== 2. LOGO (CAT WITH COOLERS) ===== -->
 <div class="logo-wrapper">
@@ -733,7 +701,22 @@ html, body {
   <!-- Content -->
   <div class="hero-content">
     <div class="hero-content-inner">
-      <h1 class="hero-headline" id="headline"></h1>
+      <h1 class="hero-headline" id="headline">
+        <span class="word-reveal">I</span>
+        <span class="word-reveal">build</span>
+        <span class="word-reveal">compelling</span>
+        <span class="word-reveal">visual</span>
+        <span class="word-reveal">stories,</span>
+        <span class="word-reveal">intelligent</span>
+        <span class="word-reveal">AI</span>
+        <span class="word-reveal">&amp;</span>
+        <span class="word-reveal">IoT</span>
+        <span class="word-reveal">systems</span>
+        <span class="word-reveal">that</span>
+        <span class="word-reveal">make</span>
+        <span class="word-reveal">ideas</span>
+        <span class="word-reveal">shine.</span>
+      </h1>
       <a href="#work" class="cta-btn cta-animate">
         <span class="cta-btn-bg"></span>
         <span class="cta-btn-text">Start a project now</span>
@@ -1078,16 +1061,11 @@ html, body {
 <!-- ===== 12. SCRIPT (MOTION.AI CANVAS SPOTLIGHT + CURSOR PREVIEW + REAL-TIME) ===== -->
 <script>
 (function() {
-  // 1. Word reveal headline
+  // 1. Word reveal headline staggering
   const headline = document.getElementById('headline');
-  const text = "I build compelling visual stories, intelligent AI & IoT systems that make ideas shine.";
-  const words = text.split(' ');
-  words.forEach(function(word, i) {
-    const span = document.createElement('span');
-    span.className = 'word-reveal';
-    span.textContent = word;
-    span.style.animationDelay = (1 + i * 0.05) + 's';
-    headline.appendChild(span);
+  const wordSpans = headline.querySelectorAll('.word-reveal');
+  wordSpans.forEach(function(span, i) {
+    span.style.animationDelay = (i * 0.03) + 's';
   });
 
   // 2. Burger menu toggle
