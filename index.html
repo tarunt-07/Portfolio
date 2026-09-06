@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tarun Kumar — The Undercover Innovator | Creative Studio & Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+* { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+
+:root {
+  --bg-primary: #E4E4E4;
+  --bg-dark: #0A0A0B;
+  --bg-dark-card: #131315;
+  --bg-dark-surface: #1A1A1D;
+  --text-dark: #111111;
+  --text-cream: #F4F1E8;
+  --text-muted: #9A9590;
+  --accent-cyan: #75C5DE;
+  --accent-cyan-glow: rgba(117, 197, 222, 0.4);
+  --accent-green: #4EEDA4;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html, body {
+  margin: 0; padding: 0;
+  background: #E4E4E4;
+  color: #111111;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0A0A0B; }
+::-webkit-scrollbar-thumb { background: #75C5DE; border-radius: 3px; }
+
+::selection { background: #75C5DE; color: #000; }
+
+/* ===== 1. SPLASH (EXACT MOTION.AI) ===== */
+.splash {
+  position: fixed; inset: 0;
+  width: 100vw; height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+  animation: splashHide 0.3s ease forwards;
+  animation-delay: 1.35s;
+}
+.splash-row { display: flex; width: 100%; height: 50%; }
+.splash-box { width: 20%; height: 100%; background: #75C5DE; }
+.splash-row-top .splash-box { animation: splashTop 1s cubic-bezier(0.96,-0.02,0.38,1.01) forwards; }
+.splash-row-bottom .splash-box { animation: splashBottom 1s cubic-bezier(0.96,-0.02,0.38,1.01) forwards; }
+.splash-box:nth-child(1) { animation-delay: 0s; }
+.splash-box:nth-child(2) { animation-delay: 0.05s; }
+.splash-box:nth-child(3) { animation-delay: 0.1s; }
+.splash-box:nth-child(4) { animation-delay: 0.15s; }
+.splash-box:nth-child(5) { animation-delay: 0.2s; }
+
+@keyframes splashTop { from { transform: translateY(0%); } to { transform: translateY(-100%); } }
+@keyframes splashBottom { from { transform: translateY(0%); } to { transform: translateY(100%); } }
+@keyframes splashHide { to { opacity: 0; visibility: hidden; } }
+
+/* ===== 2. HERO ENTRANCE (EXACT MOTION.AI) ===== */
+@keyframes heroImageIn {
+  from { opacity: 0; transform: scale(1.5) rotate(3deg); }
+  to { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+.hero-image-animate {
+  animation: heroImageIn 1.2s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
+  animation-delay: 1s;
+  opacity: 0;
+}
+
+@keyframes wordReveal {
+  from { opacity: 0; transform: translateY(10px); filter: blur(10px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.word-reveal {
+  opacity: 0;
+  display: inline-block;
+  margin-right: 0.3em;
+  animation: wordReveal 0.4s ease forwards;
+}
+
+@keyframes slideUpScale {
+  from { opacity: 0; transform: translateY(60px) scale(0.4); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.cta-animate {
+  opacity: 0;
+  animation: slideUpScale 0.8s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
+  animation-delay: 1s;
+}
+
+/* ===== CTA BUTTON (EXACT MOTION.AI) ===== */
+.cta-btn { position: relative; overflow: hidden; display: inline-flex; align-items: center; border: none; background: none; cursor: pointer; border-radius: 9999px; padding: 8px; gap: 12px; text-decoration: none; }
+.cta-btn-bg {
+  position: absolute; top: 5px; bottom: 5px; left: 8px;
+  width: calc(100% - 8px - 8px - 48px - 12px);
+  border-radius: 9999px; background: white; z-index: 0;
+  transition: width 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+@media (min-width: 768px) { .cta-btn-bg { width: calc(100% - 8px - 8px - 54px - 12px); } }
+.cta-btn:hover .cta-btn-bg { width: calc(100% - 16px); }
+.cta-btn-text { position: relative; z-index: 1; color: #111111; font-weight: 500; font-size: 16px; padding: 12px 32px; white-space: nowrap; }
+@media (min-width: 768px) { .cta-btn-text { font-size: 18px; padding: 16px 40px; } }
+.cta-btn-circle {
+  position: relative; z-index: 1; display: flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px; border-radius: 50%; background: #75C5DE; flex-shrink: 0;
+  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+@media (min-width: 768px) { .cta-btn-circle { width: 54px; height: 54px; } }
+.cta-btn:hover .cta-btn-circle { transform: translateX(-7px); }
+
+/* Menu CTA */
+.menu-cta-btn { position: relative; overflow: hidden; display: flex; align-items: center; border: none; background: none; cursor: pointer; border-radius: 9999px; padding: 6px; gap: 8px; text-decoration: none; }
+.menu-cta-bg {
+  position: absolute; top: 5px; bottom: 5px; left: 8px;
+  width: calc(100% - 8px - 8px - 38px - 8px);
+  border-radius: 9999px; background: white; z-index: 0;
+  transition: width 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.menu-cta-btn:hover .menu-cta-bg { width: calc(100% - 12px); }
+.menu-cta-text { position: relative; z-index: 1; color: #111111; font-weight: 500; font-size: 14px; padding: 8px 40px; white-space: nowrap; }
+.menu-cta-circle {
+  position: relative; z-index: 1; display: flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 50%; background: #75C5DE; flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.menu-cta-btn:hover .menu-cta-circle { transform: translateX(-4px); }
+
+/* Creator Text */
+@keyframes creatorSlideUp { from { transform: translateY(330px); } to { transform: translateY(0); } }
+.creator-text-animate {
+  transform: translateY(330px);
+  animation: creatorSlideUp 1s cubic-bezier(0.16,1,0.3,1) forwards;
+  animation-delay: 1.5s;
+}
+
+/* Navigation */
+.logo-wrapper {
+  position: fixed; top: 30px; left: 0; width: 50%; z-index: 90;
+  display: flex; justify-content: flex-start; align-items: center; mix-blend-mode: difference;
+}
+@media (min-width: 768px) { .logo-wrapper { top: 40px; } }
+.logo-wrapper .inner { padding-left: 20px; }
+@media (min-width: 768px) { .logo-wrapper .inner { padding-left: 40px; } }
+.logo-wrapper img { width: 32px; height: 32px; }
+
+.burger-wrapper {
+  position: fixed; top: 16px; right: 0; width: 50%; z-index: 100;
+  display: flex; justify-content: flex-end; align-items: center;
+}
+@media (min-width: 768px) { .burger-wrapper { top: 27px; } }
+.burger-wrapper .inner { padding-right: 20px; }
+@media (min-width: 768px) { .burger-wrapper .inner { padding-right: 40px; } }
+
+.burger-btn {
+  width: 59px; height: 59px; border-radius: 50%; border: none; cursor: pointer;
+  display: flex; flex-direction: column; gap: 4px; align-items: center; justify-content: center;
+  background: #F4F1E8; transition: background 0.4s ease, transform 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.burger-btn:hover { background: #0B0B0B; transform: scale(1.05); }
+.burger-btn .bar {
+  display: block; width: 24px; height: 2px; background: #111111;
+  transition: all 0.3s ease;
+}
+.burger-btn:hover .bar { background: #F4F1E8; }
+.burger-btn.open { background: #0B0B0B; }
+.burger-btn.open .bar { background: #F4F1E8; }
+.burger-btn.open .bar:first-child { transform: rotate(45deg) translate(2px, 2px); }
+.burger-btn.open .bar:last-child { transform: rotate(-45deg) translate(2px, -2px); }
+
+/* Menu Panel */
+.menu-panel {
+  position: fixed; z-index: 95;
+  left: 8px; right: 8px;
+  border-radius: 24px;
+  background: rgba(17,17,17,0.96);
+  backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px);
+  padding: 90px 32px 36px 32px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: top 0.5s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.4s ease;
+  top: -700px; opacity: 0; pointer-events: none;
+}
+@media (min-width: 768px) {
+  .menu-panel { left: auto; right: 7px; width: 440px; padding: 60px; }
+}
+.menu-panel.open { top: 0; opacity: 1; pointer-events: auto; }
+@media (min-width: 768px) { .menu-panel.open { top: 7px; } }
+
+.menu-panel nav { display: flex; flex-direction: column; gap: 8px; }
+.menu-panel nav a {
+  color: #F4F1E8; font-size: 36px; font-weight: 500; text-decoration: none;
+  line-height: 130%; transition: opacity 0.3s ease, transform 0.2s ease;
+}
+@media (min-width: 768px) { .menu-panel nav a { font-size: 42px; } }
+.menu-panel nav a:hover { opacity: 0.7; transform: translateX(6px); color: #75C5DE; }
+
+.menu-contact { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+.menu-email { color: #9A9590; font-size: 18px; text-decoration: none; transition: color 0.3s ease; }
+@media (min-width: 768px) { .menu-email { font-size: 20px; } }
+.menu-email:hover { color: #75C5DE; }
+.menu-socials { display: flex; gap: 24px; }
+.menu-socials a {
+  color: #9A9590; font-size: 14px; text-decoration: underline;
+  text-underline-offset: 2px; transition: color 0.3s ease;
+}
+.menu-socials a:hover { color: #F4F1E8; }
+
+/* Hero */
+.hero {
+  position: relative; width: 100%; overflow: hidden;
+  background: #E4E4E4; min-height: 100vh;
+}
+@media (min-width: 768px) { .hero { height: 100vh; min-height: 800px; } }
+
+.hero-big-text {
+  position: absolute; bottom: -30px; left: 0; right: 0; z-index: 2;
+  pointer-events: none; width: 100%; text-align: center;
+}
+@media (min-width: 768px) { .hero-big-text { bottom: -40px; } }
+.hero-big-text h2 {
+  font-weight: 500; color: #F4F1E8; line-height: 80%;
+  letter-spacing: -0.04em; white-space: nowrap;
+  font-size: clamp(180px, 28vw, 560px);
+}
+
+.hero-base-img {
+  position: absolute; top: 30vh; left: 0; right: 0; bottom: 0;
+  background-size: cover; background-repeat: no-repeat;
+  background-position: 60% center; z-index: 5;
+}
+@media (min-width: 768px) { .hero-base-img { top: 0; background-position: center; } }
+
+.hero-reveal-img {
+  position: absolute; top: 30vh; left: 0; right: 0; bottom: 0;
+  background-size: cover; background-repeat: no-repeat;
+  background-position: 60% center; z-index: 7; pointer-events: none;
+}
+@media (min-width: 768px) { .hero-reveal-img { top: 0; background-position: center; } }
+
+.hero-content {
+  position: relative; z-index: 8;
+  display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;
+  width: 100%; max-width: 1600px; margin: 0 auto;
+  padding: 110px 16px 24px 16px; pointer-events: none;
+}
+@media (min-width: 768px) {
+  .hero-content {
+    position: absolute; inset: 0;
+    justify-content: space-between;
+    padding: 160px 40px 100px 40px;
+  }
+}
+.hero-content-inner { display: flex; flex-direction: column; align-items: flex-start; gap: 30px; width: 100%; pointer-events: auto; }
+
+.hero-headline {
+  font-size: 22px; font-weight: 500; line-height: 120%;
+  letter-spacing: -0.02em; color: #111111; max-width: 447px;
+}
+@media (min-width: 768px) { .hero-headline { font-size: 28px; } }
+
+#reveal-canvas { display: none; position: absolute; inset: 0; pointer-events: none; }
+
+/* ==========================================================================
+   CRAZY ELEMENT 1: DUAL-DIRECTION KINETIC MARQUEE TICKER
+   ========================================================================== */
+.marquee-wrapper {
+  background: #111; color: #F4F1E8; overflow: hidden; padding: 24px 0;
+  display: flex; flex-direction: column; gap: 12px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transform: rotate(-1deg) scale(1.02); margin: 40px 0;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+}
+.marquee-track {
+  display: flex; width: max-content; gap: 32px;
+  will-change: transform;
+}
+.marquee-track.left { animation: marqueeLeft 32s linear infinite; }
+.marquee-track.right { animation: marqueeRight 32s linear infinite; }
+
+@keyframes marqueeLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes marqueeRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+.marquee-item {
+  font-size: clamp(20px, 3.5vw, 44px); font-weight: 800; text-transform: uppercase;
+  letter-spacing: -0.02em; white-space: nowrap; display: inline-flex; align-items: center; gap: 28px;
+}
+.marquee-item.hollow {
+  -webkit-text-stroke: 1.5px rgba(244,241,232,0.85); color: transparent;
+}
+.marquee-dot {
+  width: 12px; height: 12px; border-radius: 50%; background: #75C5DE;
+  box-shadow: 0 0 14px #75C5DE;
+}
+
+/* ==========================================================================
+   CRAZY ELEMENT 2: CURSOR-FOLLOWING FLOATING PROJECT IMAGE PREVIEW
+   ========================================================================== */
+.cursor-preview-modal {
+  position: fixed; top: 0; left: 0; width: 380px; height: 250px;
+  border-radius: 18px; overflow: hidden; pointer-events: none; z-index: 85;
+  opacity: 0; transform: scale(0.6) translate(-50%, -50%);
+  transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.cursor-preview-modal.active { opacity: 1; transform: scale(1) translate(-50%, -50%); }
+.cursor-preview-img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ==========================================================================
+   CRAZY ELEMENT 3: HIGH-TECH DARK BENTO GRID FOR PROJECTS (#work)
+   ========================================================================== */
+.dark-bento-section {
+  background: #0C0C0D; color: #F4F1E8;
+  padding: 140px 20px 120px 20px;
+  position: relative;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+@media (min-width: 768px) { .dark-bento-section { padding: 180px 48px 140px 48px; } }
+
+.bento-header {
+  max-width: 1560px; margin: 0 auto 70px auto;
+  display: flex; flex-direction: column; gap: 16px;
+}
+@media (min-width: 768px) {
+  .bento-header { flex-direction: row; justify-content: space-between; align-items: flex-end; }
+}
+
+.bento-eyebrow {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.15em; color: #75C5DE;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.bento-eyebrow::before { content: '//'; opacity: 0.7; }
+
+.bento-headline {
+  font-size: clamp(38px, 5.5vw, 82px); font-weight: 700; letter-spacing: -0.04em;
+  line-height: 102%; margin-top: 8px; color: #F4F1E8;
+}
+
+.bento-grid {
+  max-width: 1560px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr; gap: 28px;
+}
+@media (min-width: 900px) {
+  .bento-grid { grid-template-columns: repeat(12, 1fr); }
+}
+
+/* Bento Card Base */
+.bento-card {
+  background: #141416;
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 28px;
+  padding: 40px 32px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.4s ease;
+  text-decoration: none; color: inherit;
+}
+.bento-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(117,197,222,0.5);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 30px rgba(117,197,222,0.15);
+}
+
+/* Card 1: Flagship PRANTAR.io (Spans 8 cols) */
+.bento-card.flagship {
+  grid-column: span 12;
+}
+@media (min-width: 900px) { .bento-card.flagship { grid-column: span 8; min-height: 480px; } }
+
+/* Card 2: Medical IoT Caretaker (Spans 4 cols) */
+.bento-card.tall {
+  grid-column: span 12;
+}
+@media (min-width: 900px) { .bento-card.tall { grid-column: span 4; } }
+
+/* Cards 3, 4, 5 (Span 4 cols each) */
+.bento-card.standard {
+  grid-column: span 12;
+}
+@media (min-width: 900px) { .bento-card.standard { grid-column: span 4; min-height: 420px; } }
+
+.bento-card-bg-glow {
+  position: absolute; top: -120px; right: -120px; width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(117,197,222,0.2) 0%, transparent 70%);
+  border-radius: 50%; pointer-events: none;
+  transition: opacity 0.4s ease; opacity: 0.6;
+}
+.bento-card:hover .bento-card-bg-glow { opacity: 1; }
+
+.bento-top-row {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;
+}
+.bento-tag {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 6px 14px; border-radius: 9999px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  color: #75C5DE; display: inline-flex; align-items: center; gap: 8px;
+}
+.pulse-green {
+  width: 7px; height: 7px; border-radius: 50%; background: #4EEDA4;
+  box-shadow: 0 0 10px #4EEDA4; animation: pulseAnimation 1.6s infinite ease-in-out;
+}
+@keyframes pulseAnimation { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(0.8); } }
+
+.bento-title {
+  font-size: clamp(26px, 3.2vw, 44px); font-weight: 700; letter-spacing: -0.03em;
+  line-height: 110%; color: #FFF; margin-bottom: 14px;
+}
+.bento-desc {
+  font-size: 15px; color: #A09D98; line-height: 155%; max-width: 600px;
+}
+
+/* Simulated Live ECG / Waveform for HealthTech */
+.telemetry-visual-box {
+  background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 18px; padding: 20px; margin: 28px 0;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.telemetry-top {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono); font-size: 12px; color: #888;
+}
+.telemetry-metrics {
+  display: flex; gap: 20px; align-items: center;
+}
+.metric-pill {
+  font-family: var(--font-mono); font-size: 12px; color: #FFF;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.metric-pill span { color: #75C5DE; font-weight: 700; }
+
+.ecg-svg {
+  width: 100%; height: 48px; stroke: #75C5DE; stroke-width: 2; fill: none;
+  stroke-dasharray: 400; stroke-dashoffset: 400;
+  animation: drawEcg 3.5s linear infinite;
+}
+@keyframes drawEcg {
+  0% { stroke-dashoffset: 400; }
+  50% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -400; }
+}
+
+.bento-bottom-row {
+  display: flex; justify-content: space-between; align-items: center; margin-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px;
+}
+.bento-tech-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.bento-pill {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+  background: rgba(255,255,255,0.06); padding: 4px 10px; border-radius: 6px;
+  color: #CCC;
+}
+.bento-arrow-btn {
+  width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  transition: background 0.3s, transform 0.3s;
+}
+.bento-card:hover .bento-arrow-btn {
+  background: #75C5DE; transform: translateX(5px);
+}
+.bento-card:hover .bento-arrow-btn svg path { stroke: #111; }
+
+/* ==========================================================================
+   CRAZY ELEMENT 4: INTERACTIVE DEVELOPER HUD TERMINAL (#skills)
+   ========================================================================== */
+.terminal-section {
+  background: #0A0A0B; color: #F4F1E8;
+  padding: 100px 20px 140px 20px;
+  position: relative;
+}
+@media (min-width: 768px) { .terminal-section { padding: 120px 48px 160px 48px; } }
+
+.terminal-window {
+  max-width: 1560px; margin: 0 auto;
+  background: #111113; border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 24px; overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+}
+.terminal-topbar {
+  background: #19191D; padding: 16px 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.terminal-dots { display: flex; gap: 8px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot.red { background: #FF5F56; }
+.dot.yellow { background: #FFBD2E; }
+.dot.green { background: #27C93F; }
+
+.terminal-title {
+  font-family: var(--font-mono); font-size: 13px; color: #888;
+}
+
+.terminal-body {
+  padding: 40px 32px;
+  display: grid; grid-template-columns: 1fr; gap: 48px;
+}
+@media (min-width: 992px) {
+  .terminal-body { grid-template-columns: 5fr 7fr; gap: 64px; }
+}
+
+.terminal-code-block {
+  font-family: var(--font-mono); font-size: 14px; line-height: 175%;
+  color: #CFCFCF; background: #0A0A0B; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px; padding: 28px 24px; overflow-x: auto;
+}
+.code-keyword { color: #FF7B72; }
+.code-str { color: #A5D6FF; }
+.code-cyan { color: #75C5DE; }
+.code-comment { color: #6E7681; }
+
+.skills-hud-grid {
+  display: flex; flex-direction: column; gap: 28px; justify-content: center;
+}
+.hud-category {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.hud-cat-title {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 700; text-transform: uppercase;
+  color: #75C5DE; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px;
+}
+.hud-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.hud-chip {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  padding: 8px 18px; border-radius: 9999px; font-size: 13px; font-weight: 600;
+  color: #F4F1E8; transition: all 0.25s ease; cursor: default;
+}
+.hud-chip:hover {
+  background: #75C5DE; color: #0A0A0B; border-color: #75C5DE;
+  transform: translateY(-2px); box-shadow: 0 4px 14px var(--accent-cyan-glow);
+}
+
+/* ==========================================================================
+   ABOUT SECTION WITH INTERACTIVE ETHOS (#about)
+   ========================================================================== */
+.studio-about-section {
+  background: #E4E4E4; color: #111;
+  padding: 140px 20px 120px 20px;
+  border-top: 1px solid #D0D0D0;
+}
+@media (min-width: 768px) { .studio-about-section { padding: 180px 48px 140px 48px; } }
+
+.about-inner {
+  max-width: 1560px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr; gap: 56px;
+}
+@media (min-width: 992px) {
+  .about-inner { grid-template-columns: 5fr 7fr; gap: 90px; }
+}
+
+.about-badge-card {
+  background: #111; color: #FFF; border-radius: 28px; padding: 44px 36px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  min-height: 420px; box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+  position: relative; overflow: hidden;
+}
+.about-badge-card::after {
+  content: ''; position: absolute; bottom: 0; right: 0; width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(117,197,222,0.3) 0%, transparent 70%);
+}
+.about-status-live {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 12px; color: #4EEDA4;
+}
+
+.about-right-text {
+  display: flex; flex-direction: column; gap: 24px;
+}
+.about-huge-lead {
+  font-size: clamp(32px, 4.2vw, 58px); font-weight: 600; letter-spacing: -0.035em;
+  line-height: 115%; color: #111;
+}
+.about-p {
+  font-size: 18px; color: #444; line-height: 165%;
+}
+
+/* ==========================================================================
+   MEGA FOOTER (#contact)
+   ========================================================================== */
+.mega-footer {
+  background: #0A0A0B; color: #F4F1E8;
+  padding: 160px 20px 60px 20px;
+  border-radius: 40px 40px 0 0;
+}
+@media (min-width: 768px) { .mega-footer { padding: 200px 48px 60px 48px; border-radius: 56px 56px 0 0; } }
+
+.footer-inner {
+  max-width: 1560px; margin: 0 auto;
+}
+.footer-callout {
+  font-size: clamp(48px, 9vw, 130px); font-weight: 800; letter-spacing: -0.04em;
+  line-height: 95%; margin-bottom: 56px; max-width: 1300px;
+}
+.footer-cta-row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-bottom: 120px;
+}
+.footer-social-link {
+  font-size: 18px; font-weight: 600; color: #F4F1E8; text-decoration: underline;
+  text-underline-offset: 6px; transition: color 0.3s;
+}
+.footer-social-link:hover { color: #75C5DE; }
+
+.footer-bottom-bar {
+  border-top: 1px solid rgba(255,255,255,0.1); padding-top: 36px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+@media (min-width: 768px) {
+  .footer-bottom-bar { flex-direction: row; justify-content: space-between; align-items: center; }
+}
+.footer-time-badge {
+  font-family: var(--font-mono); font-size: 13px; color: #75C5DE;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash { animation: splashHide 0.01s linear forwards; }
+  .splash-box { animation: none !important; }
+  .hero-image-animate, .word-reveal, .cta-animate, .creator-text-animate {
+    animation: none !important; opacity: 1 !important;
+    transform: none !important; filter: none !important; visibility: visible !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 1. SPLASH (EXACT MOTION.AI) ===== -->
+<div class="splash" id="splash">
+  <div class="splash-row splash-row-top">
+    <div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div>
+  </div>
+  <div class="splash-row splash-row-bottom">
+    <div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div><div class="splash-box"></div>
+  </div>
+</div>
+
+<!-- ===== 2. LOGO ===== -->
+<div class="logo-wrapper">
+  <div class="inner">
+    <a href="#hero" aria-label="Home">
+      <img src="https://framerusercontent.com/images/VMcS7YYTM5PXfXvlHc9u3hSCMM.svg" alt=""/>
+    </a>
+  </div>
+</div>
+
+<!-- ===== 3. BURGER BUTTON ===== -->
+<div class="burger-wrapper">
+  <div class="inner">
+    <button class="burger-btn" id="burger-btn" aria-label="Open menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</div>
+
+<!-- ===== 4. SLIDE-OUT MENU PANEL ===== -->
+<div class="menu-panel" id="menu-panel">
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#skills">Skills</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="menu-contact">
+    <a href="https://www.linkedin.com/in/tarun-kumar-693291385/" target="_blank" rel="noreferrer" class="menu-email">LinkedIn Profile &rarr;</a>
+    <div class="menu-socials">
+      <a href="https://github.com/tarunt-07" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/tarun-kumar-693291385/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="https://medical-caretaker-iot-enabled-app.vercel.app" target="_blank" rel="noreferrer">Vercel Demo</a>
+    </div>
+  </div>
+  <div style="margin-top:32px;">
+    <a href="#contact" class="menu-cta-btn">
+      <span class="menu-cta-bg"></span>
+      <span class="menu-cta-text">Let's talk</span>
+      <span class="menu-cta-circle">
+        <svg width="14" height="14" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 13L13 5M13 5H6M13 5V12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+</div>
+
+<!-- ===== 5. HERO (EXACT MOTION.AI VISUALS) ===== -->
+<main class="hero" id="hero">
+  <!-- Big text behind image -->
+  <div class="hero-big-text creator-text-animate">
+    <h2>Visuals</h2>
+  </div>
+
+  <!-- Base image -->
+  <div class="hero-base-img hero-image-animate"
+       style="background-image:url('https://soft-zoom-63098134.figma.site/_assets/v11/5c9f982199fde1d9b85a20e5396f0fa7bacaf9a3.png?w=2560');">
+  </div>
+
+  <!-- Reveal layer -->
+  <canvas id="reveal-canvas"></canvas>
+  <div class="hero-reveal-img" id="reveal-img"
+       style="background-image:url('https://soft-zoom-63098134.figma.site/_assets/v11/6be2165e31648955b4e071f4cf2a50bc572b9bfd.png?w=1536');">
+  </div>
+
+  <!-- Content -->
+  <div class="hero-content">
+    <div class="hero-content-inner">
+      <h1 class="hero-headline" id="headline"></h1>
+      <a href="#work" class="cta-btn cta-animate">
+        <span class="cta-btn-bg"></span>
+        <span class="cta-btn-text">Start a project now</span>
+        <span class="cta-btn-circle">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 13L13 5H6M13 5V12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</main>
+
+<!-- ===== 6. CRAZY ELEMENT 1: DUAL KINETIC MARQUEE ===== -->
+<div class="marquee-wrapper">
+  <div class="marquee-track left">
+    <div class="marquee-item">PRANTAR.IO HEALTHCARE <span class="marquee-dot"></span></div>
+    <div class="marquee-item hollow">MEDI AI CLINICAL ASSISTANT <span class="marquee-dot"></span></div>
+    <div class="marquee-item">IOT MEDICAL CARETAKER <span class="marquee-dot"></span></div>
+    <div class="marquee-item hollow">COMPUTER VISION GESTURES <span class="marquee-dot"></span></div>
+    <div class="marquee-item">VIT CHENNAI CSE <span class="marquee-dot"></span></div>
+    <!-- Repeat for seamless infinite scroll -->
+    <div class="marquee-item">PRANTAR.IO HEALTHCARE <span class="marquee-dot"></span></div>
+    <div class="marquee-item hollow">MEDI AI CLINICAL ASSISTANT <span class="marquee-dot"></span></div>
+    <div class="marquee-item">IOT MEDICAL CARETAKER <span class="marquee-dot"></span></div>
+    <div class="marquee-item hollow">COMPUTER VISION GESTURES <span class="marquee-dot"></span></div>
+    <div class="marquee-item">VIT CHENNAI CSE <span class="marquee-dot"></span></div>
+  </div>
+  <div class="marquee-track right">
+    <div class="marquee-item hollow">THE UNDERCOVER INNOVATOR <span class="marquee-dot"></span></div>
+    <div class="marquee-item">IDEAS → CODE → REALITY <span class="marquee-dot"></span></div>
+    <div class="marquee-item hollow">C++ ALGORITHMIC OPTIMIZATION <span class="marquee-dot"></span></div>
+    <div class="marquee-item">FULL STACK TYPESCRIPT <span class="marquee-dot"></span></div>
+    <!-- Repeat for seamless infinite scroll -->
+    <div class="marquee-item hollow">THE UNDERCOVER INNOVATOR <span class="marquee-dot"></span></div>
+    <div class="marquee-item">IDEAS → CODE → REALITY <span class="marquee-dot"></span></div>
+    <div class="marquee-item hollow">C++ ALGORITHMIC OPTIMIZATION <span class="marquee-dot"></span></div>
+    <div class="marquee-item">FULL STACK TYPESCRIPT <span class="marquee-dot"></span></div>
+  </div>
+</div>
+
+<!-- ===== 7. CRAZY ELEMENT 2: CURSOR-FOLLOWING IMAGE MODAL ===== -->
+<div class="cursor-preview-modal" id="cursor-preview">
+  <img src="" alt="Project Preview" class="cursor-preview-img" id="cursor-preview-img"/>
+</div>
+
+<!-- ===== 8. CRAZY ELEMENT 3: HIGH-TECH DARK BENTO GRID FOR PROJECTS (#work) ===== -->
+<section class="dark-bento-section" id="work">
+  <div class="bento-header">
+    <div>
+      <span class="bento-eyebrow">Engineering Deployments & Systems</span>
+      <h2 class="bento-headline">Featured Works</h2>
+    </div>
+    <p style="color:#8E8A85; max-width:440px; font-size:15px; line-height:150%;">
+      Hover and explore flagship AI architectures, real-time IoT hardware telemetry, and automated financial systems.
+    </p>
+  </div>
+
+  <div class="bento-grid">
+    <!-- BENTO 1: PRANTAR.io Flagship (8 cols) -->
+    <a href="https://github.com/tarunt-07/prantar-io" target="_blank" rel="noreferrer" class="bento-card flagship"
+       data-preview="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80">
+      <div class="bento-card-bg-glow"></div>
+      <div>
+        <div class="bento-top-row">
+          <span class="bento-tag"><span class="pulse-green"></span> Live Telemetry Active</span>
+          <span style="font-family:var(--font-mono); font-size:12px; color:#75C5DE;">01 // FLAGSHIP</span>
+        </div>
+        <h3 class="bento-title">PRANTAR.io</h3>
+        <p class="bento-desc">
+          Smart healthcare ecosystem connecting doctors, patients, and caretakers in real time. Features live vitals telemetry, medication scheduling, smart alert pipelines, IoT device integration, and MEDI — an AI clinical assistant with role-based access control (RBAC).
+        </p>
+
+        <!-- Simulated ECG Waveform -->
+        <div class="telemetry-visual-box">
+          <div class="telemetry-top">
+            <span>MEDI CLINICAL TELEMETRY STREAM</span>
+            <span>FREQ: 120Hz</span>
+          </div>
+          <svg class="ecg-svg" viewBox="0 0 500 50">
+            <path d="M0,25 L120,25 L135,10 L150,40 L165,5 L180,45 L195,25 L320,25 L335,10 L350,40 L365,5 L380,45 L395,25 L500,25"/>
+          </svg>
+          <div class="telemetry-metrics">
+            <div class="metric-pill">BPM: <span>74</span></div>
+            <div class="metric-pill">SPO2: <span>99%</span></div>
+            <div class="metric-pill">RBAC: <span>DOCTOR/PATIENT/CARE</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-bottom-row">
+        <div class="bento-tech-pills">
+          <span class="bento-pill">TypeScript</span>
+          <span class="bento-pill">MEDI AI</span>
+          <span class="bento-pill">IoT Protocol</span>
+          <span class="bento-pill">WebSockets</span>
+        </div>
+        <div class="bento-arrow-btn">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M5 13L13 5M13 5H6M13 5V12" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- BENTO 2: Medical Caretaker IoT App (4 cols) -->
+    <a href="https://medical-caretaker-iot-enabled-app.vercel.app" target="_blank" rel="noreferrer" class="bento-card tall"
+       data-preview="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=1200&q=80">
+      <div class="bento-card-bg-glow"></div>
+      <div>
+        <div class="bento-top-row">
+          <span class="bento-tag"><span class="pulse-green"></span> Live on Vercel</span>
+          <span style="font-family:var(--font-mono); font-size:12px; color:#75C5DE;">02 // IOT</span>
+        </div>
+        <h3 class="bento-title">Medical Caretaker IoT</h3>
+        <p class="bento-desc">
+          First-ever caretaker app enabled with real-time IoT hardware medical sensors. Automated patient monitoring, fall detection logic, and proactive emergency triage notifications.
+        </p>
+
+        <div style="background:rgba(0,0,0,0.5); border-radius:14px; padding:18px; margin:24px 0; border:1px solid rgba(255,255,255,0.06);">
+          <div style="font-family:var(--font-mono); font-size:11px; color:#888; margin-bottom:8px;">HARDWARE TELEMETRY</div>
+          <div style="font-size:24px; font-weight:700; color:#4EEDA4; font-family:var(--font-mono);">SYNCED 24/7</div>
+          <div style="font-size:12px; color:#AAA; margin-top:4px;">ESP32 / Sensor Mesh &rarr; Cloud API</div>
+        </div>
+      </div>
+
+      <div class="bento-bottom-row">
+        <div class="bento-tech-pills">
+          <span class="bento-pill">JavaScript</span>
+          <span class="bento-pill">IoT Mesh</span>
+          <span class="bento-pill">Vercel</span>
+        </div>
+        <div class="bento-arrow-btn">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M5 13L13 5M13 5H6M13 5V12" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- BENTO 3: CommitLog Gesture Automation (4 cols) -->
+    <a href="https://github.com/tarunt-07/CommitLog_Automation" target="_blank" rel="noreferrer" class="bento-card standard"
+       data-preview="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80">
+      <div class="bento-card-bg-glow"></div>
+      <div>
+        <div class="bento-top-row">
+          <span class="bento-tag">Vision Engine</span>
+          <span style="font-family:var(--font-mono); font-size:12px; color:#75C5DE;">03 // CV</span>
+        </div>
+        <h3 class="bento-title">CommitLog & Gesture Module</h3>
+        <p class="bento-desc">
+          Computer vision hand-tracking module with custom gesture smoothing filters for high-stability cursor automation and streamlined developer workflows.
+        </p>
+      </div>
+
+      <div class="bento-bottom-row">
+        <div class="bento-tech-pills">
+          <span class="bento-pill">Python</span>
+          <span class="bento-pill">MediaPipe</span>
+          <span class="bento-pill">Smoothing</span>
+        </div>
+        <div class="bento-arrow-btn">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M5 13L13 5H6M13 5V12" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- BENTO 4: Smart Student Performance System (4 cols) -->
+    <a href="https://github.com/tarunt-07/Smart-Student-Performance-System" target="_blank" rel="noreferrer" class="bento-card standard"
+       data-preview="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80">
+      <div class="bento-card-bg-glow"></div>
+      <div>
+        <div class="bento-top-row">
+          <span class="bento-tag">High-Perf C++</span>
+          <span style="font-family:var(--font-mono); font-size:12px; color:#75C5DE;">04 // DSA</span>
+        </div>
+        <h3 class="bento-title">Smart Student System</h3>
+        <p class="bento-desc">
+          Algorithmic student performance tracking and smart budget management system constructed with object-oriented memory optimization and custom data structures.
+        </p>
+      </div>
+
+      <div class="bento-bottom-row">
+        <div class="bento-tech-pills">
+          <span class="bento-pill">C++</span>
+          <span class="bento-pill">DSA</span>
+          <span class="bento-pill">Budget Opt</span>
+        </div>
+        <div class="bento-arrow-btn">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M5 13L13 5H6M13 5V12" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- BENTO 5: Employee Payroll Suite (4 cols) -->
+    <a href="https://employee-payroll-system-eight.vercel.app" target="_blank" rel="noreferrer" class="bento-card standard"
+       data-preview="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80">
+      <div class="bento-card-bg-glow"></div>
+      <div>
+        <div class="bento-top-row">
+          <span class="bento-tag"><span class="pulse-green"></span> Live on Vercel</span>
+          <span style="font-family:var(--font-mono); font-size:12px; color:#75C5DE;">05 // FINTECH</span>
+        </div>
+        <h3 class="bento-title">Employee Payroll System</h3>
+        <p class="bento-desc">
+          Cloud-deployed automated payroll management platform with tax computation engines, structured financial slips, and employee record management.
+        </p>
+      </div>
+
+      <div class="bento-bottom-row">
+        <div class="bento-tech-pills">
+          <span class="bento-pill">JavaScript</span>
+          <span class="bento-pill">Tax Engine</span>
+          <span class="bento-pill">Vercel</span>
+        </div>
+        <div class="bento-arrow-btn">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M5 13L13 5H6M13 5V12" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ===== 9. CRAZY ELEMENT 4: INTERACTIVE DEVELOPER HUD TERMINAL (#skills) ===== -->
+<section class="terminal-section" id="skills">
+  <div class="terminal-window">
+    <div class="terminal-topbar">
+      <div class="terminal-dots">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+      </div>
+      <div class="terminal-title">tarun@vit-chennai: ~/arsenal/config.json</div>
+      <div style="font-family:var(--font-mono); font-size:12px; color:#4EEDA4;">● ONLINE</div>
+    </div>
+
+    <div class="terminal-body">
+      <!-- Live JSON Code Snippet -->
+      <div class="terminal-code-block">
+        <span class="code-comment">// Tarun Kumar — System Configuration</span><br/>
+        {<br/>
+        &nbsp;&nbsp;<span class="code-keyword">"developer"</span>: <span class="code-str">"Tarun Kumar"</span>,<br/>
+        &nbsp;&nbsp;<span class="code-keyword">"alias"</span>: <span class="code-str">"The Undercover Innovator 🌟"</span>,<br/>
+        &nbsp;&nbsp;<span class="code-keyword">"institution"</span>: <span class="code-str">"VIT Chennai (B.Tech CSE)"</span>,<br/>
+        &nbsp;&nbsp;<span class="code-keyword">"core_focus"</span>: [<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-cyan">"AI / Machine Learning & MEDI"</span>,<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-cyan">"IoT Telemetry & Embedded Mesh"</span>,<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-cyan">"Real-Time Full-Stack WebSockets"</span>,<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-cyan">"Computer Vision Gesture Smoothing"</span><br/>
+        &nbsp;&nbsp;],<br/>
+        &nbsp;&nbsp;<span class="code-keyword">"availability"</span>: <span class="code-str">"Open to High-Impact Opportunities"</span><br/>
+        }
+      </div>
+
+      <!-- Interactive Chips with Hover Glow -->
+      <div class="skills-hud-grid">
+        <div class="hud-category">
+          <span class="hud-cat-title">&gt; Artificial Intelligence &amp; Vision</span>
+          <div class="hud-chips">
+            <span class="hud-chip">MEDI Clinical AI</span>
+            <span class="hud-chip">MediaPipe Gesture Engine</span>
+            <span class="hud-chip">Computer Vision</span>
+            <span class="hud-chip">Python</span>
+            <span class="hud-chip">LLM Prompts &amp; Agents</span>
+          </div>
+        </div>
+
+        <div class="hud-category">
+          <span class="hud-cat-title">&gt; Full-Stack &amp; Real-Time Systems</span>
+          <div class="hud-chips">
+            <span class="hud-chip">TypeScript</span>
+            <span class="hud-chip">JavaScript (ESNext)</span>
+            <span class="hud-chip">React / Next.js</span>
+            <span class="hud-chip">Node.js &amp; Express</span>
+            <span class="hud-chip">WebSockets Real-Time</span>
+            <span class="hud-chip">REST APIs</span>
+          </div>
+        </div>
+
+        <div class="hud-category">
+          <span class="hud-cat-title">&gt; Systems, IoT &amp; Infrastructure</span>
+          <div class="hud-chips">
+            <span class="hud-chip">C++ (DSA &amp; Optimization)</span>
+            <span class="hud-chip">IoT Sensor Telemetry</span>
+            <span class="hud-chip">Role-Based Access (RBAC)</span>
+            <span class="hud-chip">Git &amp; GitHub</span>
+            <span class="hud-chip">Vercel Deployment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 10. STUDIO ABOUT SECTION (#about) ===== -->
+<section class="studio-about-section" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="about-badge-card">
+        <div>
+          <span class="about-status-live">● ACTIVELY CODING &amp; INNOVATING</span>
+          <h3 style="font-size:36px; font-weight:800; letter-spacing:-0.03em; margin-top:20px; line-height:110%;">Tarun Kumar</h3>
+          <p style="font-size:14px; color:#888; font-family:var(--font-mono); margin-top:6px;">@tarunt-07 · Chennai, India</p>
+        </div>
+        <div>
+          <div style="font-size:13px; font-family:var(--font-mono); color:#75C5DE; margin-bottom:6px;">ACADEMIC PURSUIT</div>
+          <div style="font-size:18px; font-weight:600;">B.Tech Computer Science &amp; Engineering</div>
+          <div style="font-size:14px; color:#999; margin-top:4px;">Vellore Institute of Technology (VIT Chennai)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-right-text">
+      <span style="font-family:var(--font-mono); font-size:13px; font-weight:700; color:#777; text-transform:uppercase; letter-spacing:0.1em;">
+        Philosophy &amp; Drive
+      </span>
+      <h2 class="about-huge-lead">
+        Bridging the gap between raw hardware telemetry, intelligent models, and refined user experiences.
+      </h2>
+      <p class="about-p">
+        I believe that true engineering excellence occurs when complex systems work so seamlessly they feel magical. Whether architecting <strong>PRANTAR.io</strong> to connect doctors and patients in critical medical situations or refining computer vision algorithms for hands-free computing, I focus on building technology with purpose.
+      </p>
+      <p class="about-p">
+        Driven by relentless curiosity, I am continuously exploring emerging frontiers in generative models, low-latency communication protocols, and interactive web standards.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 11. MEGA FOOTER & CTA (#contact) ===== -->
+<footer class="mega-footer" id="contact">
+  <div class="footer-inner">
+    <div style="font-family:var(--font-mono); font-size:14px; color:#75C5DE; margin-bottom:20px; letter-spacing:0.1em;">
+      // INITIATE CONTACT
+    </div>
+    <h2 class="footer-callout">
+      Have an ambitious idea? Let's turn it into code.
+    </h2>
+
+    <div class="footer-cta-row">
+      <a href="https://www.linkedin.com/in/tarun-kumar-693291385/" target="_blank" rel="noreferrer" class="cta-btn">
+        <span class="cta-btn-bg"></span>
+        <span class="cta-btn-text">Connect on LinkedIn</span>
+        <span class="cta-btn-circle">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M5 13L13 5H6M13 5V12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+
+      <a href="https://github.com/tarunt-07" target="_blank" rel="noreferrer" class="footer-social-link">
+        GitHub @tarunt-07 &rarr;
+      </a>
+
+      <a href="https://medical-caretaker-iot-enabled-app.vercel.app" target="_blank" rel="noreferrer" class="footer-social-link">
+        Medical IoT Vercel App &rarr;
+      </a>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <div style="font-size:13px; color:#666;">
+        &copy; <span id="year"></span> Tarun Kumar. CSE @ VIT Chennai. Crafted with Motion.ai physics.
+      </div>
+      <div class="footer-time-badge" id="chennai-time">
+        CHENNAI: --:--:-- GMT+5:30
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== 12. SCRIPT (MOTION.AI CANVAS SPOTLIGHT + CURSOR PREVIEW + REAL-TIME) ===== -->
+<script>
+(function() {
+  // 1. Word reveal headline
+  const headline = document.getElementById('headline');
+  const text = "I build compelling visual stories, intelligent AI & IoT systems that make ideas shine.";
+  const words = text.split(' ');
+  words.forEach(function(word, i) {
+    const span = document.createElement('span');
+    span.className = 'word-reveal';
+    span.textContent = word;
+    span.style.animationDelay = (1 + i * 0.05) + 's';
+    headline.appendChild(span);
+  });
+
+  // 2. Burger menu toggle
+  const burgerBtn = document.getElementById('burger-btn');
+  const menuPanel = document.getElementById('menu-panel');
+  let menuOpen = false;
+  burgerBtn.addEventListener('click', function() {
+    menuOpen = !menuOpen;
+    if (menuOpen) {
+      burgerBtn.classList.add('open');
+      menuPanel.classList.add('open');
+      burgerBtn.setAttribute('aria-label', 'Close menu');
+    } else {
+      burgerBtn.classList.remove('open');
+      menuPanel.classList.remove('open');
+      burgerBtn.setAttribute('aria-label', 'Open menu');
+    }
+  });
+  menuPanel.querySelectorAll('nav a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      menuOpen = false;
+      burgerBtn.classList.remove('open');
+      menuPanel.classList.remove('open');
+    });
+  });
+
+  // 3. Spotlight reveal with radial gradient canvas mask
+  const SPOTLIGHT_R = 260;
+  const canvas = document.getElementById('reveal-canvas');
+  const imgLayer = document.getElementById('reveal-img');
+  const ctx = canvas.getContext('2d');
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  const mouse = { x: -999, y: -999 };
+  const smooth = { x: -999, y: -999 };
+
+  window.addEventListener('mousemove', function(e) {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  function loop() {
+    smooth.x += (mouse.x - smooth.x) * 0.1;
+    smooth.y += (mouse.y - smooth.y) * 0.1;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    var grad = ctx.createRadialGradient(smooth.x, smooth.y, 0, smooth.x, smooth.y, SPOTLIGHT_R);
+    grad.addColorStop(0, 'rgba(255,255,255,1)');
+    grad.addColorStop(0.4, 'rgba(255,255,255,1)');
+    grad.addColorStop(0.6, 'rgba(255,255,255,0.75)');
+    grad.addColorStop(0.75, 'rgba(255,255,255,0.4)');
+    grad.addColorStop(0.88, 'rgba(255,255,255,0.12)');
+    grad.addColorStop(1, 'rgba(255,255,255,0)');
+
+    ctx.beginPath();
+    ctx.arc(smooth.x, smooth.y, SPOTLIGHT_R, 0, Math.PI * 2);
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    var dataUrl = canvas.toDataURL();
+    imgLayer.style.webkitMaskImage = 'url(' + dataUrl + ')';
+    imgLayer.style.maskImage = 'url(' + dataUrl + ')';
+    imgLayer.style.webkitMaskSize = '100% 100%';
+    imgLayer.style.maskSize = '100% 100%';
+
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+
+  // 4. Crazy Element: Floating Cursor Project Image Preview
+  const cursorPreview = document.getElementById('cursor-preview');
+  const cursorPreviewImg = document.getElementById('cursor-preview-img');
+  const bentoCards = document.querySelectorAll('.bento-card');
+
+  let curX = -999, curY = -999;
+  let targetX = -999, targetY = -999;
+
+  window.addEventListener('mousemove', function(e) {
+    targetX = e.clientX;
+    targetY = e.clientY;
+  });
+
+  function animateCursorPreview() {
+    curX += (targetX - curX) * 0.15;
+    curY += (targetY - curY) * 0.15;
+    cursorPreview.style.left = curX + 'px';
+    cursorPreview.style.top = curY + 'px';
+    requestAnimationFrame(animateCursorPreview);
+  }
+  requestAnimationFrame(animateCursorPreview);
+
+  bentoCards.forEach(function(card) {
+    card.addEventListener('mouseenter', function() {
+      const previewSrc = this.getAttribute('data-preview');
+      if (previewSrc) {
+        cursorPreviewImg.src = previewSrc;
+        cursorPreview.classList.add('active');
+      }
+    });
+    card.addEventListener('mouseleave', function() {
+      cursorPreview.classList.remove('active');
+    });
+  });
+
+  // 5. Dynamic Year & Real-Time Chennai Clock
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function updateClock() {
+    const timeElem = document.getElementById('chennai-time');
+    const now = new Date();
+    const options = { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+    timeElem.textContent = 'CHENNAI: ' + now.toLocaleTimeString('en-US', options) + ' (GMT+5:30)';
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+})();
+</script>
+</body>
+</html>

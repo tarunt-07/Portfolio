@@ -1,0 +1,22 @@
+# Logs & environment files
+*.log
+.env
+.env.*
+*.env
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+
+# Dependency directories
+node_modules/
+dist/
+build/
