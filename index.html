@@ -4,6 +4,8 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Tarun Kumar — The Undercover Innovator | Creative Studio & Systems</title>
+<link rel="icon" type="image/svg+xml" href="cat-coolers.svg"/>
+<link rel="apple-touch-icon" href="cat-coolers.svg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
@@ -143,13 +145,29 @@ html, body {
 
 /* Navigation */
 .logo-wrapper {
-  position: fixed; top: 30px; left: 0; width: 50%; z-index: 90;
-  display: flex; justify-content: flex-start; align-items: center; mix-blend-mode: difference;
+  position: fixed; top: 22px; left: 0; width: 50%; z-index: 90;
+  display: flex; justify-content: flex-start; align-items: center;
 }
-@media (min-width: 768px) { .logo-wrapper { top: 40px; } }
+@media (min-width: 768px) { .logo-wrapper { top: 30px; } }
 .logo-wrapper .inner { padding-left: 20px; }
 @media (min-width: 768px) { .logo-wrapper .inner { padding-left: 40px; } }
-.logo-wrapper img { width: 32px; height: 32px; }
+.cat-logo-link {
+  display: inline-flex; align-items: center; justify-content: center;
+  text-decoration: none; border-radius: 16px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+}
+.cat-logo-link:hover {
+  transform: scale(1.14) rotate(-7deg);
+  filter: drop-shadow(0 6px 18px rgba(117,197,222,0.45));
+}
+.cat-logo-link img {
+  width: 44px; height: 44px; border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.2);
+  display: block;
+}
+@media (min-width: 768px) {
+  .cat-logo-link img { width: 48px; height: 48px; }
+}
 
 .burger-wrapper {
   position: fixed; top: 16px; right: 0; width: 50%; z-index: 100;
@@ -646,11 +664,11 @@ html, body {
   </div>
 </div>
 
-<!-- ===== 2. LOGO ===== -->
+<!-- ===== 2. LOGO (CAT WITH COOLERS) ===== -->
 <div class="logo-wrapper">
   <div class="inner">
-    <a href="#hero" aria-label="Home">
-      <img src="https://framerusercontent.com/images/VMcS7YYTM5PXfXvlHc9u3hSCMM.svg" alt=""/>
+    <a href="#hero" aria-label="Tarun Portfolio Home" class="cat-logo-link" title="The Undercover Innovator">
+      <img src="cat-coolers.svg" alt="Cool Cat with Sunglasses Logo"/>
     </a>
   </div>
 </div>

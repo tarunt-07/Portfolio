@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="coolerFrame" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#75C5DE"/>
+      <stop offset="100%" stop-color="#3FA8C4"/>
+    </linearGradient>
+    <linearGradient id="lensTint" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#141416"/>
+      <stop offset="100%" stop-color="#050507"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Circular Dark Badge Backdrop -->
+  <rect width="64" height="64" rx="16" fill="#0E0E10"/>
+  
+  <!-- Cat Head & Ears -->
+  <path d="M13 24 L22 9 L30 18 C31.3 17.5 32.7 17.5 34 18 L42 9 L51 24 C55 31 55 45 48 52 C42 59 22 59 16 52 C9 45 9 31 13 24 Z" fill="#1C1C20" stroke="#2E2E34" stroke-width="1.2"/>
+  
+  <!-- Inner Ears (Cyan Accent) -->
+  <polygon points="21,13 16,21 24,19" fill="#75C5DE" opacity="0.9"/>
+  <polygon points="43,13 48,21 40,19" fill="#75C5DE" opacity="0.9"/>
+  
+  <!-- Coolers (Sunglasses) Top Bar -->
+  <path d="M12 28 C12 26 52 26 52 28 L51 31 L13 31 Z" fill="url(#coolerFrame)"/>
+  
+  <!-- Coolers Left Lens -->
+  <path d="M14 30 H29 C29 39 27 44 22 44 C17 44 14 39 14 30 Z" fill="url(#lensTint)" stroke="#75C5DE" stroke-width="2"/>
+  <!-- Coolers Right Lens -->
+  <path d="M35 30 H50 C50 39 47 44 42 44 C37 44 35 39 35 30 Z" fill="url(#lensTint)" stroke="#75C5DE" stroke-width="2"/>
+  
+  <!-- Sunglasses Glint / Reflection Lines -->
+  <line x1="17" y1="32" x2="22" y2="41" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+  <line x1="22" y1="32" x2="24" y2="36" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+  <line x1="38" y1="32" x2="43" y2="41" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+  <line x1="43" y1="32" x2="45" y2="36" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+  
+  <!-- Sunglasses Bridge -->
+  <rect x="28" y="30" width="8" height="3" rx="1.5" fill="#75C5DE"/>
+  
+  <!-- Nose -->
+  <polygon points="30.5,47 33.5,47 32,49" fill="#75C5DE"/>
+  
+  <!-- Confident Smirk -->
+  <path d="M29 51 Q32 53.5 35 51" stroke="#75C5DE" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- Sleek Whiskers -->
+  <line x1="7" y1="41" x2="13" y2="42" stroke="#75C5DE" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+  <line x1="6" y1="45" x2="13" y2="44" stroke="#75C5DE" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+  <line x1="57" y1="41" x2="51" y2="42" stroke="#75C5DE" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+  <line x1="58" y1="45" x2="51" y2="44" stroke="#75C5DE" stroke-width="1.2" stroke-linecap="round" opacity="0.8"/>
+</svg>
