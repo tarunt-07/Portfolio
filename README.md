@@ -9,7 +9,6 @@ Built with the **Motion.ai** design language, featuring dual-layer canvas spotli
 ## 🌟 Featured Projects
 
 - **[PRANTAR.io](https://github.com/tarunt-07/prantar-io)** — Real-time smart healthcare ecosystem connecting doctors, patients, and caretakers with live vitals telemetry, IoT sync, and MEDI (AI clinical assistant) with role-based access control (RBAC).
-- **[Medical Caretaker IoT App](https://medical-caretaker-iot-enabled-app.vercel.app)** — Real-time IoT medical sensor telemetry and proactive emergency alert triage deployed live on Vercel.
 - **[CommitLog & Gesture Module](https://github.com/tarunt-07/CommitLog_Automation)** — Computer vision hand-tracking module with custom gesture smoothing algorithms for jitter-free cursor automation.
 - **[Smart Student Performance System](https://github.com/tarunt-07/Smart-Student-Performance-System)** — High-performance academic performance analytics and intelligent budget management engine built in C++.
 - **[Employee Payroll Suite](https://employee-payroll-system-eight.vercel.app)** — Automated compensation, financial slips, and tax computation platform live on Vercel.
